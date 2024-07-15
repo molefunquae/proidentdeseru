@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song List</title>
+    <style>
+        .song {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f9f9f9;
+        }
+        .song-title {
+            font-weight: bold;
+        }
+        .song-artist {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div id="songList">
+    <!-- Songs will be dynamically added here -->
+</div>
+
+<script>
+// Example array of song objects
+var songs = [
+    { title: "Song A", artist: "Artist 1" },
+    { title: "Song B", artist: "Artist 2" },
+    { title: "Song C", artist: "Artist 3" }
+];
+
+// Function to display the song list
+function displaySongs(songArray) {
+    var songListDiv = document.getElementById('songList');
+    
+    // Clear any existing content
+    songListDiv.innerHTML = '';
+
+    // Iterate over the song array and create song elements
+    songArray.forEach(function(song) {
+        // Create a div for each song
+        var songDiv = document.createElement('div');
+        songDiv.className = 'song';
+
+        // Create a span for the song title
+        var titleSpan = document.createElement('span');
+        titleSpan.className = 'song-title';
+        titleSpan.textContent = song.title;
+
+        // Create a span for the song artist
+        var artistSpan = document.createElement('span');
+        artistSpan.className = 'song-artist';
+        artistSpan.textContent = ' by ' + song.artist;
+
+        // Append the title and artist spans to the song div
+        songDiv.appendChild(titleSpan);
+        songDiv.appendChild(artistSpan);
+
+        // Append the song div to the song list
+        songListDiv.appendChild(songDiv);
+    });
+}
+
+// Call the function to display songs
+displaySongs(songs);
+</script>
+
+</body>
+</html>
